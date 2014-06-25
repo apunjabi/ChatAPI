@@ -1,0 +1,123 @@
+<html>
+
+<head>
+	Fandango GroupMe API
+
+
+<title>Fandango GroupMe API</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div id = "container" style="width: 100%;">
+	<div id = "first textbox" style="width: 200 px; float:left;">
+
+<textarea rows = "20" cols = "40">
+
+</textarea>
+
+	</div>
+	<div id = "second textbox" style="margin-left: 220px;">
+<textarea rows = "20" cols = "40">
+
+</textarea>
+
+	</div>
+<input type= "submit" onclick= "myStopFunction()" value = "Submit" style="margin-left:100px;">
+<input type= "submit" value = "Submit" style="margin-left: 300px;">
+<div>
+
+</body>
+</html>
+
+
+<script>
+ $(document).ready(function(){
+
+<script>
+ $(document).ready(function(){
+ 	var url = "https://api.groupme.com/v3/groups?token=3d392470dde501312b9c06969a394856"
+ 	$.getJSON(url, {"channel":"/meta/handshake","version":"1.0","supportedConnectionTypes":["long-polling"],"id":"1"} )
+ 		.done(function())
+
+ 		function( data ) {
+   $( ".result" ).html( data );
+   console.log(data);
+   alert( "Load was performed." );
+ });
+
+//////STEP 1//////////////////////////////////////////
+
+ 	$.ajax({
+  type: "POST", // you request will be a post request
+  data: [
+  {
+    "channel":"/meta/handshake",
+    "version":"1.0",
+    "supportedConnectionTypes":["long-polling"],
+    "id":"1"
+  }
+]
+, // javascript object with all my params
+  url: "https://push.groupme.com/faye", // my backoffice comunication api url
+  dataType: "jsonp", // datatype can be json or jsonp
+  success: function(result){
+    console.dir(result);
+
+    response.setContentType( "application/json; charset=utf-8" );
+    //not sure where this line of code should go
+  }
+});
+
+//////STEP 2///////////////////////////////////////////////
+
+$.ajax({
+  type: "POST", // you request will be a post request
+  data: [
+ {
+    "channel":"/meta/subscribe",
+    "clientId":"1c5k4zq1mycffe161kgqp13gnvvn",
+    "subscription":"/user/<userid>",
+    "id":"2",
+    "ext":
+      {
+        "access_token":"<3d392470dde501312b9c06969a394856>",
+        "timestamp":1322556419
+      }
+  }
+]
+, // javascript object with all my params
+  url: "https://push.groupme.com/faye", // my backoffice comunication api url
+  dataType: "jsonp", // datatype can be json or jsonp
+  success: function(result){
+    console.dir(result);
+
+    response.setContentType( "application/json; charset=utf-8" );
+    //not sure where this line of code should go
+  }
+});
+
+///////////STEP 3/////////////////////////////////////////////////
+
+$.ajax({
+  type: "POST", // you request will be a post request
+  data: [
+  {
+    "channel":"/meta/connect",
+    "clientId":"0bopcao0ta10ju0d4kco10592sji",
+    "connectionType":"long-polling",
+    "id":"3"
+  }
+]
+
+, // javascript object with all my params
+  url: "https://push.groupme.com/faye", // my backoffice comunication api url
+  dataType: "jsonp", // datatype can be json or jsonp
+  success: function(result){
+    console.dir(result);
+
+    response.setContentType( "application/json; charset=utf-8" );
+    //not sure where this line of code should go
+  }
+});
+
