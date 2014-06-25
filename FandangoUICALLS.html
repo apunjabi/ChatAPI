@@ -37,6 +37,39 @@
    alert( "Load was performed." );
  });
 
+
+function createCORSRequest("POST", "https://push.groupme.com/faye") {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open("POST", "https://push.groupme.com/faye", true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, "https://push.groupme.com/faye");
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
+var xhr = createCORSRequest("POST", "https://push.groupme.com/faye");
+if (!xhr) {
+  throw new Error('CORS not supported');
+}
+
+
+
+
  $.ajax({
  	type: "POST", url:  "https://push.groupme.com/faye", "channel":"/meta/handshake","version":"1.0","supportedConnectionTypes":["long-polling"], "id":"1"});
 
