@@ -1,6 +1,4 @@
-<!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <!-- 
 This is a skeleton html file that you can use to get you started on each new 
 HTML project
@@ -20,9 +18,50 @@ Section: x
 <body>
 <div id = "container" style="width: 100%;">
 	<div id = "first textbox" style="width: 200 px; float:left;">
+		<!-- <p id= "demo"></p>
+
+		<script>
+		var myVar = setTimeout(function(){chat1()}, 1000);
+
+	function chat1() {
+    	var d = "Hello There";
+    	document.getElementById("demo").innerHTML = d;
+}
+
+
+	function myStopFunction() {
+    clearTimeout(myVar);
+    document.getElementById("demo").innerHTML = "";
+
+}
+</script>
+ -->
+
+
+
 <textarea rows = "20" cols = "40">
 
+
 </textarea>
+
+<p id= "demo"></p>
+
+		<script>
+		var myVar = setTimeout(function(){chat1()}, 1000);
+
+	function chat1() {
+    	var d = "Hello There";
+    	document.getElementById("demo").innerHTML = d;
+}
+
+
+	function myStopFunction() {
+    clearTimeout(myVar);
+    document.getElementById("demo").innerHTML = "";
+
+}
+</script>
+
 
 	</div>
 	<div id = "second textbox" style="margin-left: 220px;">
@@ -31,7 +70,7 @@ Section: x
 </textarea>
 
 	</div>
-<input type= "submit" value = "Submit" style="margin-left:100px;">
+<button onclick= "myStopFunction()" style="margin-left:100px;">Submit</button>
 <input type= "submit" value = "Submit" style="margin-left: 300px;">
 <div>
 
@@ -40,19 +79,32 @@ Section: x
 
 <script>
 $(document).ready(function(){
-$.get( " https://api.groupme.com/v3/groups?token=3d392470dde501312b9c06969a394856", function( data ) {
-  $( ".result" ).html( data );
-  console.log(data);
-  alert( "Load was performed." );
-});
+	var myVar = setInterval(function(){chat1()}, 1000);
 
-$.post( "https://push.groupme.com/faye", { "channel":"/meta/handshake",
-	"version":"1.0",
-    "supportedConnectionTypes":["long-polling"],
-    "id":"1"})
-  .done(function( data ) {
-    console.log( "Data Loaded: " + data );
-  });
+	function chat1() {
+		console.log("Hi There");
+	}
+
+
+// $.get( " https://api.groupme.com/v3/groups?token=3d392470dde501312b9c06969a394856", function( data ) {
+//   $( ".result" ).html( data );
+//   console.log(data);
+//   alert( "Load was performed." );
+// });
+
+// $.ajax({
+// 	type: "POST", url:  "https://push.groupme.com/faye", "channel":"/meta/handshake","version":"1.0","supportedConnectionTypes":["long-polling"], "id":"1"})
+
+// })
+
+
+// $.post( "https://push.groupme.com/faye", { "channel":"/meta/handshake",
+// 	"version":"1.0",
+//     "supportedConnectionTypes":["long-polling"],
+//     "id":"1"})
+  // .done(function( data ) {
+  //   console.log( "Data Loaded: " )//+ data );
+  // });
 
 
 
